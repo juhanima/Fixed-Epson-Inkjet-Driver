@@ -111,6 +111,13 @@ extern EPS_ERR_CODE epsGetUsersizeRange  (EPS_UINT8, EPS_UINT32*, EPS_UINT32*,
     /*** -------------------------------------------------------------------------------*/
 extern EPS_ERR_CODE epsMakeMainteCmd     (EPS_INT32, EPS_UINT8*, EPS_UINT32*            );
 
+    /** Added missing functions
+     */
+extern EPS_ERR_CODE SetupJobAttrib          (const EPS_JOB_ATTRIB*                      );
+extern EPS_ERR_CODE SendStartJob			(EPS_BOOL                                   );
+extern EPS_ERR_CODE SendEndJob  			(EPS_BOOL                                   );
+extern EPS_ERR_CODE PrintBand               (const EPS_UINT8*, EPS_UINT32, EPS_UINT32*  );
+    
 #ifdef __cplusplus
 }
 #endif

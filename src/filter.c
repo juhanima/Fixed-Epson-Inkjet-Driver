@@ -34,6 +34,8 @@
 #include "epson-protocol.h"
 #include "epson-escpr-api.h"
 #include "epson-escpr-mem.h"
+#include "epson-escpr-services.h"
+#include "epson-escpage.h"
 
 #include "err.h"
 #include "mem.h"
@@ -42,6 +44,7 @@
 #include "libprtX.h"
 #include "optBase.h"
 #include "linux_cmn.h"
+#include "xfifo.h"
 
 #define WIDTH_BYTES(bits) (((bits) + 31) / 32 * 4)
 
@@ -534,7 +537,7 @@ main (int argc, char *argv[])
 						memcpy(rever_buf + k*3, startpage + pos + (bandBmp.widthBytes - 6) - k*3, 3);
 					}
 				}
-				PrintBand (rever_buf, bandBmp.widthBytes, &printHeight);
+				epsPrintBand (rever_buf, bandBmp.widthBytes, &printHeight);
 				pos -= bandBmp.widthBytes;
 			}
 

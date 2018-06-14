@@ -28,7 +28,7 @@
 #include <string.h>
 #include "err.h"
 
-#define HAVE_DEBUG 0
+#define HAVE_DEBUG 1
 
 /* global  */
 static char err_pname[256] = "";
