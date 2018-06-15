@@ -1,0 +1,19 @@
+= Fixed Epson Inkjet Driver
+
+Yesterday I bought an Epson ET-2650 printer, which seemed like a good match for my needs. Supports IPP even, at least in theory (didn't go through of entering my WiFi password in the puny control panel, but just used USB). The sales guy didn't have the faintest if it will work with Linux, and sure enough, after installing the driver from https://epson.com/Support/wa00821 the printing was every time abrubtly terminated just before the end when the filter epson-escpr kept crashing.
+
+My environment is Arch Linux AMD64. Luckily the printer package contains source code with GPL2 license, so it wasn't hard to fix. Now it works like a charm, and at least the printing features seem to be on par with Windows. Didn't yet take a look at the scanning, thogh.
+
+To use this version in a non-Debian/RedHat/SUSE distro, juct check out the sources and run the following at the top level
+
+[source,bash]
+-----
+$ ./configure --prefix=/usr --with-cupsfilterdir=/usr/lib/cups/filter --with-cupsppddir=/usr/share/ppd
+$ make
+$ sudo make install
+-----
+
+The other thing to do is to pick up the correct PPD file from the sources and give it to CUPS.
+
+Hopefully this works with other Epson models too.
+
